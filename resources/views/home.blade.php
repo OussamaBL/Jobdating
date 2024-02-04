@@ -101,42 +101,76 @@
         ================================================== -->
         <section id="content" class="s-content">
 
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 
-            <!-- intro
-            ----------------------------------------------- -->
-            <section id="intro" class="s-intro target-section">
 
-                <div class="s-intro__bg"></div>
+        .section {
+            max-width: 100%;
+            background: linear-gradient(to right, #211f24 30%,  #8a8a8a);
+            color: white;
+            line-height: 1.5;
+            font-family: 'Nunito', sans-serif;
+        }
 
-                <div class="row s-intro__content">
+        @media (min-width: 600px) {
+            .section {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
 
-                    <div class="s-intro__content-bg"></div>
+            .about-us {
+                padding: 3vw 0 3vh 3vw;
+            }
 
-                    <div class="column lg-12 s-intro__content-inner">
-                        
-                        <h1 class="s-intro__content-title">
-                        you are  <br>
-                        here to find  <br>
-                        your job                        </h1>
+            .image-wrapper {
+                filter: hue-rotate(20deg);
+                clip-path: polygon(0 100%, 50% 0, 100% 0, 100% 100%);
+            }
+        }
 
-                        <div class="s-intro__content-buttons">
-                            <a href="#download" class="btn btn--stroke s-intro__content-btn smoothscroll">More About Us</a>
-                            <a href="https://player.vimeo.com/video/14592941?color=f26522&title=0&byline=0&portrait=0" class="s-intro__content-video-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M7 6v12l10-6z"></path></svg>
-                            </a>
-                        </div>
-                        
-                    </div> <!-- s-intro__content-inner -->
+        .about-us {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
 
-                </div> <!-- s-intro__content -->
+            h2 {
+                font-weight: 600;
+                white-space: nowrap;
+                font-size: clamp(2rem, 5vw, 4rem);
+                margin-block-end: .5rem;
+            }
 
-                <div class="s-intro__scroll-down">
-                    <a href="#about" class="smoothscroll">
-                        <span>Scroll Down</span>
-                    </a>
-                </div> <!-- s-intro__scroll-down -->
+            p {
+                font-size: clamp(1rem, 1.5vw, 3rem);
+            }
+        }
 
-            </section> <!-- end s-intro -->
+        .image-wrapper {
+            height: 100%;
+            width: 100%;
+            clip-path: polygon(0, 0, 0, 0);
+
+            img {
+                display: block;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                object-position: right center;
+            }
+        }
+        </style>
+            <section class="section">
+                <div class="about-us">
+                    <h2 style="color: white">Job Dating</h2>
+                    <p>Le principe du job dating est d’inviter des candidats pour des entretiens d’embauche express d’une dizaine de minutes. Cet événement se déroule généralement sur une journée ou une demi-journée. Très utilisé dans le recrutement de saisonniers, il permet de recruter beaucoup de candidats dans un court laps de temps.
+                    </p>
+                </div>
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2940&q=80" />
+                </div>
+            </section>
 
 
             <!-- about

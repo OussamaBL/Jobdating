@@ -3,7 +3,7 @@
 <form action="{{ route('Announcement.update', $announcement->id)}}" method="POST">
     @csrf
     @method('PUT')
- <div class="col-sm-12 col-xl-6" style="margin: auto">
+ <div class="col-sm-12 col-xl-6 mt-4" style="margin: auto">
     <div class="bg-secondary rounded h-100 p-4">
         <h6 class="mb-4">update announcement </h6>
         <div class="form-floating mb-3">

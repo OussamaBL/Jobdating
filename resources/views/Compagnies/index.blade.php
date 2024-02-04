@@ -7,7 +7,7 @@ Dashboard
     <div class="container-fluid position-relative d-flex p-0">
 
          <!-- Content Start -->
-        <div class="content">
+        <div class="content" style="margin-left: 0px !important;width: 100%">
            <!-- Sale & Revenue Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">

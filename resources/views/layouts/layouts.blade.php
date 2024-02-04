@@ -51,7 +51,7 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="ms-3">
-                        <h6 class="mb-0">{{ Auth::user()->name }}</h6>
+                        <h6 class="mb-0" style="color: black">{{ Auth::user()->name }}</h6>
                         <span>Admin</span>
                     </div>
                 </div>
