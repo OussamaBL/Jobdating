@@ -2893,17 +2893,7 @@ img.u-pull-left {
     margin-bottom : var(--vspace-0_5);
 }
 
-.show-ctr .list-block__title::before {
-    content           : counter(ctr, decimal-leading-zero) ".";
-    counter-increment : ctr;
-    display           : block;
-    font-family       : var(--font-2);
-    font-weight       : 600;
-    font-size         : 1.25em;
-    line-height       : 1;
-    color             : var(--color-1);
-    margin-bottom     : var(--vspace-0_25);
-}
+
 
 .list-block__icon {
     display          : flex;

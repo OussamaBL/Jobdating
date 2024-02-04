@@ -11,10 +11,15 @@ class CompagnieController extends Controller
 {
     public function index()
     {
-            $compagnies = Compagnie::latest()->paginate(1);
-            $announcements = Announcement::with('user','compagnie')->latest()->paginate(8);
-            return view('Compagnies.index', compact('compagnies', 'announcements'));
+            $compagnies = Compagnie::count();
+            $announcements = Announcement::count();
+            $users=User::count();
+            return view('Compagnies.index', compact('compagnies', 'announcements','users'));
         
+    }
+    public function compagnies(){
+        $compagnies = Compagnie::latest()->paginate(8);
+        return view('Compagnies.compagnies', compact('compagnies'));
     }
 
     public function store(CompagnieRequest $request)
