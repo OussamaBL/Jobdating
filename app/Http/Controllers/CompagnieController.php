@@ -9,6 +9,11 @@ use App\Http\Requests\CompagnieRequest;
 
 class CompagnieController extends Controller
 {
+    public function home()
+    {
+        $announcements = Announcement::latest()->paginate(8);
+        return view('Home',compact('announcements'));
+    }
     public function index()
     {
             $compagnies = Compagnie::count();

@@ -76,13 +76,24 @@
                     <ul class="s-header__social">
                      @guest
                      <li>
-                     <a href="{{route('form.login')}}" class="btn btn--stroke s-intro__content-btn smoothscroll">Log in</a>
+                     <a href="{{route('login')}}" class="btn btn--stroke s-intro__content-btn smoothscroll">Log in</a>
 
                 </li>
                       @endguest
                         @auth
                         <li>
-                            <a href="{{route('logout')}}" class="btn btn--stroke s-intro__content-btn smoothscroll">Log out</a>
+                            
+
+                            <a class="btn btn--stroke s-intro__content-btn smoothscroll"  href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                             @csrf
+                         </form>
+
 
                        </li>
                         @endauth

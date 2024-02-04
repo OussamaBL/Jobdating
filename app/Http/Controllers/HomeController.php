@@ -21,9 +21,5 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        $announcements = Announcement::latest()->paginate(8);
-        return view('Home',compact('announcements'));
-    }
+    
 }
