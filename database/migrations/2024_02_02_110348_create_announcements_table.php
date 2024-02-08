@@ -17,15 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('title',255);
             $table->string('content');
-            $table->unsignedBigInteger('user_id'); 
+            $table->text('image');
+            
             $table->unsignedBigInteger('compagnie_id');
-
-
-            $table->foreign('user_id')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade'); 
                            
             $table->foreign('compagnie_id')
                   ->references('id')

@@ -12,7 +12,7 @@ class CompagnieController extends Controller
     public function home()
     {
         $announcements = Announcement::latest()->paginate(8);
-        return view('Home',compact('announcements'));
+        return view('index',compact('announcements'));
     }
     public function index()
     {
@@ -56,5 +56,14 @@ class CompagnieController extends Controller
         return redirect()->route('Compagnies.index')
                         ->with('success','Company Updated successfully.');
     }
+    // public function archive(){
+    //     $compagnies=Compagnie::onlyTrashed()->get();
+    //     return view('Compagnies.archive', compact('compagnies'));
+    // }
+    // public function allCompagnies(){
+    //     $compagnies=Compagnie::withTrashed()->get();
+    //     return view('Compagnies.allCompagnies', compact('compagnies'));
+    // }
+    
 
 }

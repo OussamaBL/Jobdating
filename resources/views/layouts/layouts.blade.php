@@ -30,16 +30,18 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('css/style.css') }}"" rel="stylesheet">
+
+    @yield('css')
 </head>
 
 <body>
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        {{-- <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
-        </div>
+        </div> --}}
         <!-- Spinner End -->
 
 
@@ -59,6 +61,8 @@
                     <a href="{{ route('Compagnies.index') }}" class="nav-item nav-link active mb-3"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="{{ route('Compagnies.compagnies') }}" class="nav-item nav-link active mb-3"><i class="fa fa-tachometer-alt me-2"></i>Compagnies</a>
                     <a href="{{ route('Announcements.announcements') }}" class="nav-item nav-link mb-3 active"><i class="fa fa-tachometer-alt me-2"></i>Announcements</a>
+                    <a href="{{ route('skill.index') }}" class="nav-item nav-link mb-3 active"><i class="fa fa-tachometer-alt me-2"></i>Skills</a>
+                    <a href="{{ route('users.index') }}" class="nav-item nav-link mb-3 active"><i class="fa fa-tachometer-alt me-2"></i>Users</a>
                    
                 </div>
             </nav>
@@ -99,7 +103,13 @@
     
              <!-- JavaScript Libraries -->
             <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            
+
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+            
+            @stack('scripts')
+
+            
             <script src="{{ asset('js/lib/chart/chart.min.js')}}"></script>
             <script src="{{ asset('js/lib/easing/easing.min.js')}}"></script>
             <script src="{{ asset('js/lib/waypoints/waypoints.min.js')}}"></script>
@@ -107,9 +117,11 @@
             <script src="{{ asset('js/lib/tempusdominus/js/moment.min.js')}}"></script>
             <script src="{{ asset('js/lib/tempusdominus/js/moment-timezone.min.js')}}"></script>
             <script src="{{ asset('js/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+            
+            
 
             <!-- Template Javascript -->
-            <script src="{{ asset('js/js/main.js')}}"></script>
+            {{-- <script src="{{ asset('js/js/main.js')}}"></script> --}}
 </body>
 
 </html>

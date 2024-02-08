@@ -27,14 +27,15 @@ class AnnouncementRequest extends FormRequest
             return [
                 'title'=>'required|string' ,
                 'content'=>'required|string',
-                'user_id' => 'required|integer',
                 'compagnie_id' => 'required|integer',
+                'image' => ['nullable','image','mimes:jpg,jpeg,png,gif','max:2048'],
                 
             ];
         }
         public function messages(){
             return [
                 'title.required' => 'vous devez remplire le champ du title' ,
+                'image.mimes' => 'format image incorrect',
              ];
         }
     }
