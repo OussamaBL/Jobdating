@@ -11,14 +11,20 @@
                 
                 <div class="row process-list list-block show-ctr block-lg-one-half block-tab-whole ">
                 
-                @foreach ($announcements as $announcement)
+                @foreach ($filteredAnnouncements as $announcement)
         
                     <div class="col-4" style="box-shadow: 5px 5px 20px 1px #00000066;">
-                        <div class="card" style="width: 33rem;">
+                        <div class="card" style="width: 100%;">
                             <img src="{{ asset('images/'.$announcement->image.'') }}" style="margin-bottom: 0px" class="card-img-top" alt="...">
                             <div class="card-body" style="padding: 15px">
                                 <h5 class="card-title" style="margin-bottom: 0px;margin-top: 0px">{{ $announcement->title }}</h5>
                                 <p class="card-text">{{ substr($announcement->content, 0, 20) }}</p>
+                                <strong>Skills</strong>
+                                    <ul>
+                                        @foreach($announcement->skills as $skill)
+                                            <li>{{ $skill->name }}</li>
+                                        @endforeach
+                                    </ul>
                                 <a href="{{ route('announce.details',$announcement->id) }}" class="btn btn-primary">Details</a>
                             </div>
                         </div>

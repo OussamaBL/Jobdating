@@ -15,9 +15,11 @@
 
     <!-- CSS
     ================================================== -->
+    @yield('css')
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">          
     <link rel="stylesheet" href="{{asset('css/vendor.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
-    @yield('css')
+    
     <!-- favicons
     ================================================== -->
     {{-- <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -108,20 +110,12 @@
 
             <div class="row s-header__inner">
 
-                <div class="s-header__block">
-                    <div class="s-header__logo">
-                        <a class="logo" href="index.html">
-                            <img src="images/job dating.svg" alt="Homepage">
-                        </a>
-                    </div>
-
-                    <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
-                </div> <!-- end s-header__block -->
+           
 
                 <nav class="s-header__nav">
     
                     <ul class="s-header__menu-links">
-                        <li class="current"><a href="#intro" class="smoothscroll">Intro</a></li>
+                        <li class="current"><a href="{{ route('home') }}" class="smoothscroll">Home</a></li>
                         @auth
                             @if (Auth::user()->hasRole('admin'))
                                 <li><a href="{{route('Compagnies.index')}}" class="smoothscroll">dashboard</a></li>
@@ -137,10 +131,12 @@
 
                     <ul class="s-header__social">
                      @guest
-                     <li>
-                     <a href="{{route('login')}}" class="btn btn--stroke s-intro__content-btn smoothscroll">Log in</a>
-
-                </li>
+                        <li>
+                            <a href="{{route('login')}}" class="btn btn--stroke s-intro__content-btn smoothscroll">Log in</a>
+                        </li>
+                        <li>
+                            <a href="{{route('register')}}" class="btn btn--stroke s-intro__content-btn smoothscroll">Register</a>
+                        </li>
                       @endguest
                         @auth
                         <li>
@@ -264,8 +260,10 @@
     ================================================== -->
      <script src="{{asset('js/main.js')}}"></script>
     <script src="{{asset('js/plugins.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-    @yield('script')
+    @stack('scripts')
+
 
 </body>
 </html>

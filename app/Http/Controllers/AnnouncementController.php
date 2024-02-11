@@ -82,10 +82,22 @@ class AnnouncementController extends Controller
      
         return view('Announcements.formAnnouncement', compact('compagnies','skills'));
     }
-    public function details($id){
-        $announcement=Announcement::find($id);
-        return view('Announcements.details',compact('announcement'));
+    public function details($id)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            $announcement = Announcement::find($id);
+            $hasPostulated = $user->announcements()->where('announcements.id', $announcement->id)->exists();
+        }
+        else{
+            $announcement = Announcement::find($id);
+            $hasPostulated=true;
+        }
+        
+
+        return view('Announcements.details', compact('announcement', 'hasPostulated'));
     }
+
     public function postuler($id){
         Postuler::create([
             "announcement_id" => $id,

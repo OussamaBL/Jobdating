@@ -19,12 +19,10 @@ use Spatie\Permission\Middleware\RoleMiddleware;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
+Route::get('/', [CompagnieController::class, 'home'])->name('home');
 Route::get('/home', [CompagnieController::class, 'home'])->name('home');
 
 Route::fallback(function(){

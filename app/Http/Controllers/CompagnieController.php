@@ -6,14 +6,50 @@ use App\Models\Announcement;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\CompagnieRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 class CompagnieController extends Controller
 {
     public function home()
     {
-        $announcements = Announcement::latest()->paginate(8);
-        return view('index',compact('announcements'));
+        if(Auth::check()){
+            $user = Auth::user();
+        
+            $postulatedAnnouncementIds = $user->announcements()->pluck('announcements.id')->toArray();
+    
+            $userSkillIds = $user->skills->pluck('id')->toArray();
+        
+             $announcements = Announcement::whereNotIn('id', $postulatedAnnouncementIds)
+            ->latest()
+            ->get();
+        
+            $filteredAnnouncements = [];
+        
+            foreach ($announcements as $announcement) {
+                $announcementSkillIds = $announcement->skills->pluck('id')->toArray();
+        
+                $commonSkillsCount = count(array_intersect($userSkillIds, $announcementSkillIds));
+        
+                $halfAnnouncementSkillsCount = count($announcementSkillIds) / 2;
+        
+                if ($commonSkillsCount >= $halfAnnouncementSkillsCount) {
+                    $filteredAnnouncements[] = $announcement;
+                }
+            }
+        }
+        else{
+            $filteredAnnouncements=Announcement::all();
+        }
+        
+    
+        // $perPage = 8;
+        // $currentPage = \Illuminate\Pagination\Paginator::resolveCurrentPage();
+        // $announcements = \Illuminate\Pagination\Paginator::make(array_slice($filteredAnnouncements, ($currentPage - 1) * $perPage, $perPage), count($filteredAnnouncements), $perPage);
+    
+        return view('index', compact('filteredAnnouncements'));
     }
+
     public function index()
     {
             $compagnies = Compagnie::count();

@@ -3,6 +3,12 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 @section('content')
+<style>
+    .select2-container{
+        width: 100% !important;
+    }
+</style>
+
 @if ($errors->any())
 <div class="alert alert-danger">
     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -37,14 +43,17 @@
                     <option value="{{$Compagnie->id}}">{{$Compagnie->name}}</option>
                 @endforeach
             </select>
+            
         </div>
 
-        <div class="form-floating mb-3">
+        <div class="form-floating mb-3 mt-5">
+            <label for="floatingInput" style="top: -44px">Skills</label>
             <select class="js-example-basic-multiple" name="skills[]" multiple="multiple">
                 @foreach($skills as $skill)
                     <option value="{{$skill->id}}">{{$skill->name}}</option>
                 @endforeach
             </select>
+            
         </div>
 
         
